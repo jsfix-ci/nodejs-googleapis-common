@@ -160,10 +160,14 @@ async function createAPIRequestAsync<T>(parameters: APIRequestParams) {
 
   // Parse urls
   if (options.url) {
-    options.url = urlTemplate.parse(options.url).expand(params);
+    options.url = /* TODO: JSFIX could not patch the breaking change:
+    Some functions that were already marked as private are now no longer available */
+    urlTemplate.parse(options.url).expand(params);
   }
   if (parameters.mediaUrl) {
-    parameters.mediaUrl = urlTemplate.parse(parameters.mediaUrl).expand(params);
+    parameters.mediaUrl = /* TODO: JSFIX could not patch the breaking change:
+    Some functions that were already marked as private are now no longer available */
+    urlTemplate.parse(parameters.mediaUrl).expand(params);
   }
 
   // Rewrite url if rootUrl is globally set
